@@ -68,6 +68,7 @@ export default function TipsSlide() {
             background: 'linear-gradient(135deg, #00F5FF 0%, #7B68EE 50%, #FF6B35 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
+            textTransform: 'uppercase',
           }}
         >
           Що б ми сказали собі в минулому

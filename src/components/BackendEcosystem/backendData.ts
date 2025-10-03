@@ -200,5 +200,5 @@ export const backends: Backend[] = [
   }
 ];
 
-export const COLLISION_INTERVAL = 8000; // 8 секунд
+export const COLLISION_INTERVAL = 5000; // 5 секунд
 export const LOGO_SIZE = 70;
