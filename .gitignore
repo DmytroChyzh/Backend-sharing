@@ -54,4 +54,4 @@ coverage/
 
 # Temporary folders
 tmp/
-temp/
+temp/public/videos/*.mp4
