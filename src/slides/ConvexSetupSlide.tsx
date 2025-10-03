@@ -80,14 +80,13 @@ export default function ConvexSetupSlide() {
               height: '828px',
             }}
           >
-            <video
-              src="/videos/convex.mp4"
-              controls
-              preload="metadata"
-              autoPlay={false}
-              muted={false}
-              playsInline
-              className="w-full h-full object-contain"
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/OFXvoKr5-sM?autoplay=1&loop=1&playlist=OFXvoKr5-sM&controls=0&rel=0&modestbranding=1&showinfo=0&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&start=0&end=0&vq=hd1080"
+              title="Convex Setup Video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen={false}
               style={{
                 backgroundColor: '#000',
                 borderRadius: '16px'

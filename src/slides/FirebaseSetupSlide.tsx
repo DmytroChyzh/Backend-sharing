@@ -78,21 +78,18 @@ export default function FirebaseSetupSlide() {
                 border: '1px solid rgba(0, 245, 255, 0.3)'
               }}
             >
-              <video
-                className="w-full h-full object-contain"
-                controls
-                preload="metadata"
-                autoPlay={false}
-                muted={false}
-                playsInline
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/7SpdXBie6Cg?autoplay=1&loop=1&playlist=7SpdXBie6Cg&controls=0&rel=0&modestbranding=1&showinfo=0&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&start=0&end=0&vq=hd1080"
+                title="Firebase Setup Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen={false}
                 style={{
                   borderRadius: '16px',
                   backgroundColor: '#000'
                 }}
-              >
-                <source src="/videos/2025-10-03 15-35-05.mp4" type="video/mp4" />
-                Ваш браузер не підтримує відео тег.
-              </video>
+              />
             </div>
           </div>
         </div>
