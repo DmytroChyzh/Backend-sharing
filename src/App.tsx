@@ -42,7 +42,6 @@ const slides = [
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const [preloadedSlides, setPreloadedSlides] = useState<Set<number>>(new Set([0]));
 
   // Preload next and previous slides
@@ -67,13 +66,12 @@ function App() {
   const navigateToSlide = (newSlide: number) => {
     if (newSlide === currentSlide || isTransitioning) return;
     
-    setDirection(newSlide > currentSlide ? 'next' : 'prev');
     setIsTransitioning(true);
     
     setTimeout(() => {
       setCurrentSlide(newSlide);
       setIsTransitioning(false);
-    }, 150);
+    }, 300);
   };
 
   useEffect(() => {
@@ -98,12 +96,10 @@ function App() {
       <AnimatedBackground />
       <div className="relative z-10 w-full h-full">
         <div 
-          className={`w-full h-full transition-all duration-300 ease-in-out ${
+          className={`w-full h-full transition-opacity duration-300 ease-in-out ${
             isTransitioning 
-              ? direction === 'next' 
-                ? 'transform translate-x-full opacity-0' 
-                : 'transform -translate-x-full opacity-0'
-              : 'transform translate-x-0 opacity-100'
+              ? 'opacity-0' 
+              : 'opacity-100'
           }`}
         >
           <Suspense fallback={
