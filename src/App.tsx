@@ -43,6 +43,8 @@ function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [preloadedSlides, setPreloadedSlides] = useState<Set<number>>(new Set([0]));
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Preload next and previous slides
   useEffect(() => {
@@ -74,6 +76,33 @@ function App() {
     }, 300);
   };
 
+  // Touch gesture handlers
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && currentSlide < slides.length - 1) {
+      navigateToSlide(currentSlide + 1);
+    }
+    if (isRightSwipe && currentSlide > 0) {
+      navigateToSlide(currentSlide - 1);
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' || e.key === ' ') {
@@ -92,11 +121,16 @@ function App() {
   const CurrentSlideComponent = slides[currentSlide];
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
+    <div 
+      className="relative w-screen min-h-screen overflow-auto"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       <AnimatedBackground />
-      <div className="relative z-10 w-full h-full">
+      <div className="relative z-10 w-full min-h-screen">
         <div 
-          className={`w-full h-full transition-opacity duration-300 ease-in-out ${
+          className={`w-full min-h-screen transition-opacity duration-300 ease-in-out slide-container ${
             isTransitioning 
               ? 'opacity-0' 
               : 'opacity-100'
@@ -104,8 +138,8 @@ function App() {
         >
           <Suspense fallback={
             <div className="w-full h-full flex items-center justify-center">
-              <div className="glassmorphism-3d p-8 rounded-3xl animate-glow-pulse">
-                <div className="text-4xl text-center rainbow-text">
+              <div className="glassmorphism-3d p-4 md:p-8 rounded-3xl animate-glow-pulse">
+                <div className="text-2xl md:text-4xl text-center rainbow-text">
                   Завантаження слайда...
                 </div>
               </div>

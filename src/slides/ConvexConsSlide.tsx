@@ -43,58 +43,60 @@ export default function ConvexConsSlide() {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center p-8">
-      <h2
-        className="text-6xl font-bold mb-16"
-        style={{
-          color: '#FF6B35',
-          textShadow: '0 0 30px rgba(255, 107, 53, 0.8)',
-        }}
-      >
-        CONVEX: ЧЕРВОНІ ПРАПОРИ 🚩
-      </h2>
+    <div className="relative w-full min-h-screen overflow-auto">
+      <div className="min-h-screen flex flex-col items-center justify-center pt-12 md:pt-20 pb-12 md:pb-20 px-6 md:px-12">
+        <h2
+          className="text-xl md:text-3xl lg:text-5xl font-bold mb-8 md:mb-12 lg:mb-16"
+          style={{
+            color: '#FF6B35',
+            textShadow: '0 0 30px rgba(255, 107, 53, 0.8)',
+          }}
+        >
+          CONVEX: ЧЕРВОНІ ПРАПОРИ 🚩
+        </h2>
 
-      <div className="grid grid-cols-2 gap-8 max-w-7xl w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-7xl w-full">
         {cons.map((con, index) => (
           <div
             key={index}
-            className="glassmorphism p-8 rounded-3xl hover:scale-105 transition-all"
+            className="glassmorphism p-6 md:p-8 lg:p-10 rounded-3xl hover:scale-105 transition-all"
             style={{
               border: '2px solid #FF6B35',
               boxShadow: '0 0 40px rgba(255, 107, 53, 0.4)',
               background: 'rgba(255, 107, 53, 0.05)',
             }}
           >
-            <div className="text-5xl mb-6 text-center">❌</div>
+            <div className="text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6 text-center">❌</div>
             <h3
-              className="text-3xl font-bold mb-6 text-center"
+              className="text-lg md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 text-center"
               style={{ color: '#FF6B35' }}
             >
               {con.title}
             </h3>
             <div
-              className="h-0.5 w-full mb-6"
+              className="h-0.5 w-full mb-4 md:mb-6"
               style={{ background: '#FF6B35' }}
             />
-            <div className="space-y-2 text-base text-white/80 mb-6">
+            <div className="space-y-3 text-sm md:text-base text-white/80 mb-4 md:mb-6">
               {con.points.map((point, i) => (
                 <p key={i} className="leading-relaxed">{point}</p>
               ))}
             </div>
             {con.quote && (
               <div
-                className="p-4 rounded-xl mono text-center"
+                className="p-3 md:p-4 rounded-xl mono text-center"
                 style={{
                   background: 'rgba(255, 107, 53, 0.1)',
                   border: '1px solid rgba(255, 107, 53, 0.3)',
                   color: '#FF8C42',
                 }}
               >
-                {con.quote}
+                <p className="text-sm md:text-base">{con.quote}</p>
               </div>
             )}
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

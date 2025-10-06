@@ -8,51 +8,53 @@ export default function ConvexSetupSlide() {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-8">
-      <div className="max-w-8xl w-full grid grid-cols-2 gap-16">
-        <div className="h-full flex flex-col">
-          <h2
-            className="text-5xl font-bold mb-12"
-            style={{
-              background: 'linear-gradient(135deg, #7B68EE 0%, #00F5FF 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            CONVEX: ПЕРШІ КРОКИ
-          </h2>
+    <div className="relative w-full min-h-screen overflow-auto">
+      <div className="min-h-screen flex flex-col items-start justify-center pt-8 md:pt-16 pb-8 px-4 md:px-8">
+        <h2
+          className="slide-title text-xl md:text-2xl lg:text-5xl font-bold mb-4 md:mb-6 lg:mb-10 text-left"
+          style={{
+            background: 'linear-gradient(135deg, #7B68EE 0%, #00F5FF 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          CONVEX: ПЕРШІ КРОКИ
+        </h2>
 
-          <div className="space-y-6 relative flex-1" style={{ height: '600px', overflowY: 'auto' }}>
+        <div className="grid-container max-w-8xl w-full grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-4 lg:gap-12">
+        <div className="h-full flex flex-col">
+          <div className="steps-container space-y-3 md:space-y-4 lg:space-y-6 relative flex-1" style={{ height: '600px', overflowY: 'auto' }}>
             <div
-              className="absolute left-8 top-0 bottom-0 w-1"
+              className="timeline-line absolute top-0 bottom-0 w-1"
               style={{
                 background: 'linear-gradient(180deg, #7B68EE 0%, #00F5FF 100%)',
                 boxShadow: '0 0 10px rgba(123, 104, 238, 0.5)',
+                left: 'calc(1.5rem + 2px)',
               }}
             />
 
             {steps.map((step, index) => (
-              <div key={index} className="flex items-start gap-6 relative">
+              <div key={index} className="step-item flex items-start gap-3 md:gap-4 lg:gap-6 relative">
                 <div
-                  className="glassmorphism w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 z-10"
+                  className="step-icon glassmorphism w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center flex-shrink-0 z-10"
                   style={{
                     border: '2px solid #7B68EE',
                     boxShadow: '0 0 20px rgba(123, 104, 238, 0.4)',
                   }}
                 >
-                  <span className="text-3xl">{step.emoji}</span>
+                  <span className="text-xl md:text-2xl lg:text-3xl">{step.emoji}</span>
                 </div>
 
                 <div
-                  className="glassmorphism flex-1 p-6 rounded-2xl"
+                  className="step-content glassmorphism flex-1 p-3 md:p-4 lg:p-6 rounded-2xl"
                   style={{
                     border: '1px solid rgba(123, 104, 238, 0.3)',
                   }}
                 >
-                  <h3 className="text-2xl font-bold mb-2" style={{ color: '#A855F7' }}>
+                  <h3 className="step-title text-base md:text-lg lg:text-2xl font-bold mb-2" style={{ color: '#A855F7' }}>
                     {step.title}
                   </h3>
-                  <p className="text-lg text-white/70">{step.desc}</p>
+                  <p className="step-text text-sm md:text-sm lg:text-lg text-white/70">{step.desc}</p>
                   {step.isCode && (
                     <div
                       className="mt-3 p-3 rounded-lg mono text-sm"
@@ -73,11 +75,12 @@ export default function ConvexSetupSlide() {
 
         <div className="flex items-end">
           <div
-            className="glassmorphism p-6 rounded-3xl w-full"
+            className="video-container glassmorphism p-6 rounded-3xl w-full"
             style={{
               border: '2px solid #7B68EE',
               boxShadow: '0 0 30px rgba(123, 104, 238, 0.3)',
-              height: '828px',
+              height: '100%',
+              minHeight: '600px',
             }}
           >
             <iframe
@@ -93,6 +96,7 @@ export default function ConvexSetupSlide() {
               }}
             />
           </div>
+        </div>
         </div>
       </div>
     </div>

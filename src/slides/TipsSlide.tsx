@@ -61,10 +61,11 @@ export default function TipsSlide() {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center relative">
-      <div className="pt-8 pb-4 relative z-10">
+    <div className="w-full h-screen relative overflow-visible" style={{ position: 'relative', height: '100vh' }}>
+      {/* Header */}
+      <div className="absolute top-8 md:top-16 left-1/2 transform -translate-x-1/2" style={{ zIndex: 15 }}>
         <h2
-          className="text-6xl font-bold mb-4"
+          className="text-xl md:text-3xl lg:text-5xl xl:text-6xl font-bold text-center"
           style={{
             background: 'linear-gradient(135deg, #00F5FF 0%, #7B68EE 50%, #FF6B35 100%)',
             WebkitBackgroundClip: 'text',
@@ -76,19 +77,26 @@ export default function TipsSlide() {
         </h2>
       </div>
 
-      {/* 3D Cloud Container */}
+      {/* 3D Cloud Container - Centered */}
       <div 
         className="cloud-container"
         style={{
-          position: 'relative',
-          width: '800px',
-          height: '800px',
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: window.innerWidth < 768 ? '400px' : window.innerWidth < 1024 ? '500px' : '600px',
+          height: window.innerWidth < 768 ? '400px' : window.innerWidth < 1024 ? '500px' : '600px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           perspective: '1000px',
           transformStyle: 'preserve-3d',
-          margin: '0 auto',
+          margin: 0,
+          padding: 0,
+          boxSizing: 'border-box',
+          zIndex: 5,
+          transformOrigin: 'center center',
         }}
       >
         {/* Central Brain */}
@@ -96,9 +104,18 @@ export default function TipsSlide() {
           className="brain-center"
           style={{
             position: 'absolute',
-            fontSize: '8rem',
+            top: '50%',
+            left: '42%',
+            transform: 'translate(-50%, -50%)',
+            fontSize: window.innerWidth < 768 ? '4rem' : window.innerWidth < 1024 ? '5rem' : '6rem',
             zIndex: 10,
             animation: 'brainPulse 3s ease-in-out infinite',
+            margin: 0,
+            padding: 0,
+            boxSizing: 'border-box',
+            transformOrigin: 'center center',
+            width: 'fit-content',
+            height: 'fit-content',
           }}
         >
           🧠
@@ -115,7 +132,7 @@ export default function TipsSlide() {
               className={`keyword ${tip.size} ${tip.color}`}
               style={{
                 position: 'absolute',
-                padding: tip.size === 'large' ? '16px 32px' : tip.size === 'medium' ? '12px 24px' : '10px 20px',
+                padding: tip.size === 'large' ? '12px 20px' : tip.size === 'medium' ? '10px 16px' : '8px 14px',
                 background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -124,7 +141,7 @@ export default function TipsSlide() {
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 whiteSpace: 'nowrap',
-                fontSize: tip.size === 'large' ? '1.4rem' : tip.size === 'medium' ? '1.1rem' : '0.9rem',
+                fontSize: tip.size === 'large' ? '1.1rem' : tip.size === 'medium' ? '0.9rem' : '0.8rem',
                 animation: `orbit${tip.orbit} ${duration}s linear infinite ${direction}`,
                 ...getColorStyles(tip.color),
               }}

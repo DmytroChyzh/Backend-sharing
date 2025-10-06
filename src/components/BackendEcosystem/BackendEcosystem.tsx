@@ -15,7 +15,7 @@ export default function BackendEcosystem() {
       <div className="grid-background"></div>
       
       {/* Header */}
-      <div className="header">
+      <div className="header-wrapper">
         <h1 className="header-title">Є й інші варіанти, але ми їх не юзали</h1>
       </div>
 

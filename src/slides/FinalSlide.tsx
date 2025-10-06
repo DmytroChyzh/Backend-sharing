@@ -35,10 +35,10 @@ export default function FinalSlide() {
   }, [memes.length, currentMemeIndex, memes]);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center relative overflow-auto">
       {/* Картка з мемами - верхня частина */}
       {memes.length > 0 && (
-        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="absolute top-4 md:top-20 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-sm md:max-w-lg px-4 flex justify-center">
           <div
             className="glassmorphism rounded-2xl transition-all duration-500 hover:scale-105 cursor-pointer"
             style={{
@@ -46,7 +46,7 @@ export default function FinalSlide() {
               background: 'rgba(139, 92, 246, 0.15)',
               boxShadow: '0 0 30px rgba(139, 92, 246, 0.3)',
               animation: 'slideInDown 1s ease-out 0.3s both',
-              padding: '28px',
+              padding: '16px md:28px',
               display: 'inline-block',
             }}
           >
@@ -58,8 +58,10 @@ export default function FinalSlide() {
                 className="block rounded-xl transition-all duration-500 hover:scale-105"
                 style={{
                   animation: 'fadeIn 0.5s ease-in-out',
-                  maxWidth: '500px',
-                  maxHeight: '400px',
+                  maxWidth: '100%',
+                  maxHeight: window.innerWidth < 768 ? '200px' : '350px',
+                  width: '100%',
+                  height: 'auto',
                   objectFit: 'contain',
                 }}
                 onError={(e) => {
@@ -70,7 +72,7 @@ export default function FinalSlide() {
                 onLoad={() => {
                   console.log('Мем успішно завантажено:', memes[currentMemeIndex]?.src);
                 }}
-                onClick={() => {
+                onClick={(e) => {
                   // Додаємо інтерактивність - можна клікнути на картинку
                   const img = e.currentTarget;
                   if (img.style.transform === 'scale(1.2)') {
@@ -102,9 +104,9 @@ export default function FinalSlide() {
       )}
 
       {/* Заголовок - центрований */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-full max-w-4xl px-4 flex flex-col items-center" style={{ marginTop: '20px' }}>
         <h2
-          className="text-6xl font-bold text-center mb-4"
+          className="text-2xl md:text-4xl lg:text-6xl font-bold text-center mb-2 md:mb-4"
           style={{
             background: 'linear-gradient(135deg, #00F5FF 0%, #7B68EE 50%, #FF6B35 100%)',
             WebkitBackgroundClip: 'text',
@@ -116,7 +118,7 @@ export default function FinalSlide() {
           Бекенд - це не страшно.
         </h2>
         <h3
-          className="text-3xl font-medium text-center"
+          className="text-sm md:text-xl lg:text-3xl font-medium text-center"
           style={{
             color: '#E0E0E0',
             textTransform: 'uppercase',
@@ -127,9 +129,9 @@ export default function FinalSlide() {
       </div>
 
       {/* Картка збіру - нижче */}
-      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute bottom-20 md:bottom-40 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-lg md:max-w-xl px-4">
         <div
-          className="glassmorphism p-6 rounded-2xl flex items-center gap-6"
+          className="glassmorphism p-4 md:p-6 rounded-2xl flex flex-col md:flex-row items-center gap-4 md:gap-6"
           style={{
             border: '2px solid rgba(255, 107, 53, 0.4)',
             background: 'rgba(255, 107, 53, 0.1)',
@@ -138,21 +140,37 @@ export default function FinalSlide() {
             maxWidth: '600px',
           }}
         >
-          {/* Зображення збіру */}
-          <div className="flex-shrink-0">
+          {/* Зображення збіру - тільки на десктопі */}
+          <div className="hidden md:flex flex-shrink-0">
             <img 
               src="/images/zbir-png.png" 
               alt="QR код для збіру" 
-              className="w-56 h-56 object-contain"
+              className="w-40 h-40 object-contain"
               style={{
                 filter: 'drop-shadow(0 0 10px rgba(255, 107, 53, 0.5))',
               }}
             />
           </div>
           
+          {/* Кнопка для мобільних - тільки на мобільних */}
+          <div className="md:hidden flex-shrink-0">
+            <a
+              href="https://send.monobank.ua/jar/9mMDfEJ5ve"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 rounded-xl font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95"
+              style={{
+                background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
+                boxShadow: '0 4px 15px rgba(255, 107, 53, 0.4)',
+              }}
+            >
+              Підтримати збір 💝
+            </a>
+          </div>
+          
           {/* Текст */}
-          <div className="flex-1 text-left">
-            <p className="text-xl font-bold mb-2" style={{ color: '#FF6B35' }}>
+          <div className="flex-1 text-center md:text-left">
+            <p className="text-sm md:text-xl font-bold mb-2" style={{ color: '#FF6B35' }}>
               Якщо сподобалась презентація, підтримайте збір на Сіткомет ❤️
             </p>
           </div>

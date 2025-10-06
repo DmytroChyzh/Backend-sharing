@@ -10,11 +10,11 @@ const TitleSlide = memo(function TitleSlide() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center p-8">
-      <div className="flex items-center gap-12 mb-8">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center p-responsive">
+      <div className="flex items-center gap-6 md:gap-12 mb-6 md:mb-8">
         <div className="animate-float hover:scale-110 transition-transform duration-300 cursor-pointer morph-icon">
           <Flame
-            className="w-24 h-24"
+            className="w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24"
             style={{
               color: '#FF6B35',
               filter: 'drop-shadow(0 0 30px #FF6B35)',
@@ -23,7 +23,7 @@ const TitleSlide = memo(function TitleSlide() {
         </div>
         <div className="animate-float hover:scale-110 transition-transform duration-300 cursor-pointer morph-icon" style={{ animationDelay: '0.5s' }}>
           <Zap
-            className="w-24 h-24"
+            className="w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24"
             style={{
               color: '#7B68EE',
               filter: 'drop-shadow(0 0 30px #7B68EE)',
@@ -33,7 +33,7 @@ const TitleSlide = memo(function TitleSlide() {
       </div>
 
       <h1
-        className={`text-8xl font-bold mb-6 text-center animate-slide-in-down hover:scale-105 transition-transform duration-500 cursor-pointer ${
+        className={`text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 text-center animate-slide-in-down hover:scale-105 transition-transform duration-500 cursor-pointer ${
           easterEggActive ? 'rainbow-text easter-egg' : ''
         }`}
         onClick={handleTitleClick}
@@ -52,7 +52,7 @@ const TitleSlide = memo(function TitleSlide() {
       </h1>
 
       <div
-        className="h-1 w-64 mb-12 animate-slide-in-up shimmer-effect"
+        className="h-1 w-32 md:w-48 lg:w-64 mb-8 md:mb-12 animate-slide-in-up shimmer-effect"
         style={{
           background: 'linear-gradient(90deg, #FF6B35 0%, #7B68EE 50%, #00F5FF 100%)',
           boxShadow: '0 0 20px rgba(123, 104, 238, 0.8)',
@@ -60,8 +60,8 @@ const TitleSlide = memo(function TitleSlide() {
         }}
       />
 
-      <div className="glassmorphism-3d px-12 py-8 rounded-3xl max-w-3xl text-center animate-scale-in hover:animate-glow-pulse transition-all duration-300 card-3d">
-        <p className="text-2xl text-white/90 font-medium">
+      <div className="glassmorphism-3d px-6 md:px-12 py-4 md:py-8 rounded-3xl max-w-3xl text-center animate-scale-in hover:animate-glow-pulse transition-all duration-300 card-3d">
+        <p className="text-base md:text-xl lg:text-2xl text-white/90 font-medium">
           Досвід дизайнерів, які вайбкодять
         </p>
       </div>

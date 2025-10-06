@@ -1,7 +1,25 @@
 export default function WhoWeAreSlide() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center p-8" style={{ position: 'relative', zIndex: 1 }}>
+    <div className="w-full min-h-screen flex flex-col items-center justify-center pt-8 md:pt-16 pb-8 px-4 md:px-8" style={{ position: 'relative', zIndex: 1 }}>
       <style>{`
+        @media (max-width: 768px) {
+          .terminal-container {
+            padding: 16px !important;
+            margin: 0 8px;
+          }
+          .terminal-content {
+            font-size: 0.75rem !important;
+            line-height: 1.4 !important;
+          }
+          .big-error {
+            padding: 16px !important;
+            margin-top: 16px !important;
+          }
+          .conclusion {
+            margin-top: 16px !important;
+          }
+        }
+        
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
@@ -57,7 +75,7 @@ export default function WhoWeAreSlide() {
         }
       `}</style>
       <h2
-        className="text-6xl font-bold mb-16"
+        className="text-xl md:text-3xl lg:text-5xl font-bold mb-6 md:mb-8 lg:mb-12 text-center"
         style={{
           background: 'linear-gradient(135deg, #00F5FF 0%, #7B68EE 100%)',
           WebkitBackgroundClip: 'text',
@@ -75,11 +93,11 @@ export default function WhoWeAreSlide() {
           style={{
             position: 'relative',
             maxWidth: '900px',
-            width: '90%',
+            width: '100%',
             background: 'rgba(18, 18, 24, 0.9)',
             border: '2px solid rgba(0, 245, 255, 0.3)',
             borderRadius: '8px',
-            padding: '40px',
+            padding: '20px',
             boxShadow: `
               0 0 20px rgba(0, 245, 255, 0.2),
               0 0 40px rgba(0, 245, 255, 0.1),
@@ -145,8 +163,8 @@ export default function WhoWeAreSlide() {
             className="terminal-content"
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
-              lineHeight: 1.8
+              fontSize: 'clamp(0.75rem, 2vw, 1.1rem)',
+              lineHeight: 1.6
             }}
           >
             {/* Command Line */}
@@ -252,8 +270,8 @@ export default function WhoWeAreSlide() {
             <div 
               className="big-error"
               style={{
-                marginTop: '40px',
-                padding: '30px',
+                marginTop: '20px',
+                padding: '20px',
                 background: 'rgba(255, 7, 58, 0.1)',
                 border: '2px solid #FF073A',
                 borderRadius: '4px',
@@ -271,7 +289,7 @@ export default function WhoWeAreSlide() {
               <div 
                 className="error-title"
                 style={{
-                  fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+                  fontSize: 'clamp(1.2rem, 3vw, 2.5rem)',
                   fontWeight: 700,
                   color: '#FF073A',
                   textShadow: `
@@ -279,14 +297,14 @@ export default function WhoWeAreSlide() {
                     0 0 20px #FF073A,
                     0 0 30px #FF073A
                   `,
-                  marginBottom: '10px',
+                  marginBottom: '8px',
                   animation: 'glitchText 3s infinite'
                 }}
               >ERROR: BACKEND REQUIRED</div>
               <div 
                 className="error-subtitle"
                 style={{
-                  fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
+                  fontSize: 'clamp(0.8rem, 2vw, 1.2rem)',
                   color: '#8A8A8F'
                 }}
               >System cannot proceed without backend infrastructure</div>
@@ -296,7 +314,7 @@ export default function WhoWeAreSlide() {
             <div 
               className="conclusion"
               style={{
-                marginTop: '40px',
+                marginTop: '20px',
                 textAlign: 'center',
                 opacity: 0,
                 animation: 'fadeInUp 1.5s ease forwards',
@@ -305,7 +323,7 @@ export default function WhoWeAreSlide() {
             >
               <div 
                 style={{
-                  fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+                  fontSize: 'clamp(1.2rem, 2.5vw, 2.5rem)',
                   fontWeight: 700,
                   color: '#00F5FF'
                 }}
@@ -313,7 +331,7 @@ export default function WhoWeAreSlide() {
                 <span 
                   style={{
                     display: 'inline-block',
-                    marginRight: '10px'
+                    marginRight: '8px'
                   }}
                 >→</span>ПОРА ВЧИТИСЬ
               </div>
