@@ -18,6 +18,7 @@ export default function TipsSlide() {
       return () => clearInterval(interval);
     }
   }, []);
+  
   const getColorStyles = (color: string) => {
     const colorMap = {
       orange: {
@@ -73,7 +74,6 @@ export default function TipsSlide() {
         >
           Що б ми сказали собі в минулому
         </h2>
-        
       </div>
 
       {/* 3D Cloud Container */}
@@ -101,7 +101,7 @@ export default function TipsSlide() {
             animation: 'brainPulse 3s ease-in-out infinite',
           }}
         >
-🧠
+          🧠
         </div>
         
         {/* Orbiting Tips */}

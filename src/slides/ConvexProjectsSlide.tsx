@@ -2,13 +2,13 @@ export default function ConvexProjectsSlide() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* BMW Quote */}
-      <div className="relative z-10 w-full pt-20 overflow-hidden">
-        <div className="glassmorphism px-8 py-6 rounded-3xl max-w-2xl animate-move-left-to-right"
+      <div className="absolute top-[1000px] left-1/2 transform -translate-x-1/2 z-20">
+        <div className="glassmorphism px-8 py-6 rounded-3xl max-w-2xl"
           style={{
             border: '2px solid rgba(139, 92, 246, 0.4)',
             background: 'rgba(139, 92, 246, 0.15)',
             boxShadow: '0 0 30px rgba(139, 92, 246, 0.3)',
-            animation: 'moveLeftToRight 32s ease-in-out infinite',
+            animation: 'slideInDown 1s ease-out 0.3s both',
           }}
         >
           <div className="flex items-center gap-4">
@@ -154,11 +154,6 @@ export default function ConvexProjectsSlide() {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 }
-
-
-
