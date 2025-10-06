@@ -126,6 +126,8 @@ export const useBackendAnimation = (
     isCollidingRef.current = true;
 
     const backend = backendsRef.current[currentIndexRef.current];
+    console.log(`Показуємо бекенд ${currentIndexRef.current}: ${backend?.name}`);
+    
     if (!backend || !backend.element) {
       isCollidingRef.current = false;
       return;
@@ -240,6 +242,7 @@ export const useBackendAnimation = (
 
       // Move to next backend
       currentIndexRef.current = (currentIndexRef.current + 1) % backendsRef.current.length;
+      console.log(`Переключення на наступний бекенд: ${currentIndexRef.current}`);
     }
   }, [detailCardRef, logoContainerRef, updateCard]);
 
@@ -286,16 +289,20 @@ export const useBackendAnimation = (
     initializeBackends();
     createFloatingLogos();
     
+    console.log(`Ініціалізовано ${backendsRef.current.length} бекендів:`, backendsRef.current.map(b => b.name));
+    
     // Start animation
     animate();
     
     // Show first backend
     if (backendsRef.current[0]) {
+      console.log('Показуємо перший бекенд:', backendsRef.current[0].name);
       updateCard(backendsRef.current[0]);
     }
     
-    // Start collision sequence after 2 seconds
+    // Start collision sequence after 2 seconds, but start with second backend
     const startCollisionTimeout = setTimeout(() => {
+      currentIndexRef.current = 1; // Починаємо з другого бекенду
       collisionIntervalRef.current = setInterval(collisionSequence, COLLISION_INTERVAL);
       collisionSequence();
     }, 2000);

@@ -18,6 +18,24 @@ export interface Backend {
 
 export const backends: Backend[] = [
   {
+    name: 'PocketBase',
+    emoji: '📦',
+    color: '#0090FF',
+    description: 'Один Go файл = весь бекенд. SQLite, realtime, auth - все включено.',
+    features: [
+      'Single executable file',
+      'SQLite database',
+      'Admin dashboard included'
+    ],
+    tags: ['#Go', '#SQLite', '#Portable'],
+    stats: ['⭐ 30k+ Stars', '💰 Free', '🌐 pocketbase.io', '🚀 5 min setup'],
+    x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth - 100 : 1000),
+    y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight - 100 : 800),
+    vx: (Math.random() - 0.5) * 2,
+    vy: (Math.random() - 0.5) * 2,
+    rotation: 0
+  },
+  {
     name: 'Supabase',
     emoji: '🐘',
     color: '#3ECF8E',
@@ -34,24 +52,6 @@ export const backends: Backend[] = [
     y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight - 100 : 800),
     vx: (Math.random() - 0.5) * 2, // velocity X
     vy: (Math.random() - 0.5) * 2, // velocity Y
-    rotation: 0
-  },
-  {
-    name: 'PocketBase',
-    emoji: '📦',
-    color: '#0090FF',
-    description: 'Один Go файл = весь бекенд. SQLite, realtime, auth - все включено.',
-    features: [
-      'Single executable file',
-      'SQLite database',
-      'Admin dashboard included'
-    ],
-    tags: ['#Go', '#SQLite', '#Portable'],
-    stats: ['⭐ 30k+ Stars', '💰 Free', '🌐 pocketbase.io', '🚀 5 min setup'],
-    x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth - 100 : 1000),
-    y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight - 100 : 800),
-    vx: (Math.random() - 0.5) * 2,
-    vy: (Math.random() - 0.5) * 2,
     rotation: 0
   },
   {
@@ -197,8 +197,44 @@ export const backends: Backend[] = [
     vx: (Math.random() - 0.5) * 2,
     vy: (Math.random() - 0.5) * 2,
     rotation: 0
+  },
+  {
+    name: 'PlanetScale',
+    emoji: '🪐',
+    color: '#00D4AA',
+    description: 'MySQL як сервіс з branching. Git для бази даних.',
+    features: [
+      'Database branching',
+      'MySQL compatible',
+      'Serverless scaling'
+    ],
+    tags: ['#MySQL', '#Branching', '#Serverless'],
+    stats: ['⭐ 15k+ Stars', '💰 Free tier', '🌐 planetscale.com', '🌿 Git-like'],
+    x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth - 100 : 1000),
+    y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight - 100 : 800),
+    vx: (Math.random() - 0.5) * 2,
+    vy: (Math.random() - 0.5) * 2,
+    rotation: 0
+  },
+  {
+    name: 'Upstash',
+    emoji: '⚡',
+    color: '#FF6B35',
+    description: 'Serverless Redis + Kafka. Pay тільки за використання.',
+    features: [
+      'Serverless Redis',
+      'Kafka streams',
+      'Edge computing'
+    ],
+    tags: ['#Redis', '#Kafka', '#Serverless'],
+    stats: ['⭐ 10k+ Stars', '💰 Pay-per-use', '🌐 upstash.com', '⚡ Ultra fast'],
+    x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth - 100 : 1000),
+    y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight - 100 : 800),
+    vx: (Math.random() - 0.5) * 2,
+    vy: (Math.random() - 0.5) * 2,
+    rotation: 0
   }
 ];
 
-export const COLLISION_INTERVAL = 5000; // 5 секунд
+export const COLLISION_INTERVAL = 3000; // 3 секунди для швидшого переключення
 export const LOGO_SIZE = 70;
