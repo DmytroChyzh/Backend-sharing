@@ -1,0 +1,414 @@
+/* Backend Ecosystem Styles */
+
+.slide-16-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+  color: #fff;
+}
+
+/* Animated grid background */
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 100;
+}
+
+.header-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00F5FF 0%, #B794F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(0, 245, 255, 0.3);
+  letter-spacing: 2px;
+  animation: titleGlow 3s ease-in-out infinite;
+  text-transform: uppercase;
+}
+
+@keyframes titleGlow {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3)); }
+  50% { filter: drop-shadow(0 0 40px rgba(0, 245, 255, 0.6)); }
+}
+
+/* Detail Card (центральна) */
+.detail-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 50;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+  transform-origin: center center;
+}
+
+.card-ambient-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 49;
+  animation: ambientPulse 4s ease-in-out infinite;
+  transition: background 0.5s ease;
+}
+
+@keyframes ambientPulse {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: translate(-50%, -50%) scale(1); 
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: translate(-50%, -50%) scale(1.1); 
+  }
+}
+
+.card-logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  font-size: 80px;
+  text-align: center;
+  line-height: 100px;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #fff 0%, #E0E0E0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00F5FF, transparent);
+  margin: 0 auto 20px;
+}
+
+.card-description {
+  text-align: center;
+  color: #E0E0E0;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  min-height: 75px;
+}
+
+.card-features {
+  list-style: none;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.card-features li {
+  padding: 8px 0;
+  color: #E0E0E0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-features li::before {
+  content: '→';
+  color: inherit;
+  font-weight: bold;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.tag {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: #E0E0E0;
+}
+
+.card-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: #E0E0E0;
+  text-align: center;
+}
+
+.stat {
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Floating Logos */
+.logo-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floating-logo {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  font-size: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  pointer-events: auto;
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+.floating-logo.dimmed {
+  opacity: 0.3;
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.floating-logo.active {
+  filter: drop-shadow(0 0 40px currentColor);
+  transform: scale(1.2);
+}
+
+/* Trail & Effects */
+.trail-particle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 40px;
+  animation: trailFade 0.5s ease-out forwards;
+}
+
+@keyframes trailFade {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+.ripple {
+  position: absolute;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: rippleExpand 0.6s ease-out forwards;
+}
+
+@keyframes rippleExpand {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  to {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.burst-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: burstFade 0.8s ease-out forwards;
+}
+
+@keyframes burstFade {
+  to {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+
+/* CTA Section */
+.cta-section {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  text-align: center;
+  z-index: 100;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  opacity: 0;
+  animation: ctaFadeIn 1s ease-out 2s forwards;
+}
+
+@keyframes ctaFadeIn {
+  to { opacity: 1; }
+}
+
+.cta-section h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #00F5FF 0%, #B794F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cta-section p {
+  color: #E0E0E0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Content transitions */
+.card-content {
+  animation: contentSlide 0.5s ease-out;
+}
+
+@keyframes contentSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shake animation for collision */
+@keyframes shake {
+  0%, 100% { transform: translate(-50%, -50%); }
+  25% { transform: translate(-50%, -50%) translate(-3px, 3px); }
+  50% { transform: translate(-50%, -50%) translate(3px, -3px); }
+  75% { transform: translate(-50%, -50%) translate(-3px, -3px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-title { 
+    font-size: 2rem; 
+  }
+  .detail-card { 
+    width: 90%; 
+    padding: 30px; 
+  }
+  .floating-logo { 
+    width: 50px; 
+    height: 50px; 
+    font-size: 40px; 
+  }
+  .cta-section { 
+    display: none; 
+  }
+  .card-logo {
+    width: 80px;
+    height: 80px;
+    font-size: 60px;
+    line-height: 80px;
+  }
+  .card-title {
+    font-size: 1.5rem;
+  }
+  .card-description {
+    font-size: 0.9rem;
+  }
+  .card-features li {
+    font-size: 0.85rem;
+  }
+  .card-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-card { 
+    width: 95%; 
+    padding: 20px; 
+  }
+  .floating-logo { 
+    width: 40px; 
+    height: 40px; 
+    font-size: 32px; 
+  }
+  .card-logo {
+    width: 60px;
+    height: 60px;
+    font-size: 48px;
+    line-height: 60px;
+  }
+  .card-title {
+    font-size: 1.2rem;
+  }
+  .card-description {
+    font-size: 0.8rem;
+    min-height: 60px;
+  }
+  .card-features li {
+    font-size: 0.8rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+  .stat {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}
